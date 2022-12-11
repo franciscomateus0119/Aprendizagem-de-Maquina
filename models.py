@@ -419,7 +419,7 @@ class NaiveBayes():
     deviation = self.std[class_index]
     deviation [deviation == 0] = 1
     self.std[class_index] = deviation
-    likelihood = np.exp(-((x - mean)**2)/(2*deviation)) / (np.sqrt(2 * np.pi * deviation))
+    likelihood = np.exp(-(((x - mean)/deviation)**2)/(2)) / (np.sqrt(2 * np.pi * deviation))
     return likelihood
 
 class LinearBayesClassifier():
