@@ -417,9 +417,9 @@ class NaiveBayes():
   def pdf(self,class_index,x):
     mean = self.mean[class_index]
     deviation = self.std[class_index]
-    deviation [deviation == 0] = 1
+    deviation [deviation == 0] = 1e-10
     self.std[class_index] = deviation
-    likelihood = np.exp(-(((x - mean)/deviation)**2)/(2)) / (np.sqrt(2 * np.pi * deviation))
+    likelihood = (1/(deviation * np.sqrt(2 * np.pi))) * np.exp(-((x - mean)**2)/(2*(deviation**2)))
     return likelihood
 
 class LinearBayesClassifier():
